@@ -1,0 +1,29 @@
+---
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: eks-????
+  region: us-east-1
+
+
+managedNodeGroups:
+  - name: nodes-1-????????????????
+    instanceType: m5.xlarge
+    minSize: 2
+    maxSize: 4
+    desiredCapacity: 3
+    privateNetworking: true
+    securityGroups:
+      attachIDs: ["sg-XXX","sg-YYY","sg-ZZZ"]      
+vpc:
+  id: "vpc-ZZZ"
+  securityGroup: "sg-XXX"    # this is the ControlPlaneSecurityGroup
+  subnets:
+    private:
+      private1:
+          id: "subnet-XXX"
+      private2:
+          id: "subnet-XXX"    
+  
+
